@@ -17,11 +17,14 @@
         :key='index'
         :value='cat.id'  
         >{{cat.label}}</Option>
-
         </Select>
       </div>
       <div class='image-input'>
          <error>文章必须配有一张图片</error>
+         <div class='inner-image-input'>
+           <img :src='image_url' width='40px' height='40px' v-if="image_url"/>
+         <Button @click='showImageModal=true' type='primary' class='flex-center' icon='ios-camera-outline'>添加图片</Button>
+        </div>
       </div>
     </div>
     <quill-editor
@@ -58,6 +61,7 @@ export default {
     title:'',
     category:'',
     image_url:'',
+    showImageModal:false,
     content: "",
     editorOption: {
       debug: "info",
@@ -106,5 +110,26 @@ export default {
 <style scoped>
 .quill-editor {
   height: 72vh;
+}
+
+.inner-image-input{
+  display:flex;
+  align-items:center;
+}
+
+.flex-center{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.post-actions-row{
+  display:flex;
+  justify-content:space-between;
+  padding:10px;
+}
+
+.ivew-icon-ios-camera-outline{
+  font-size:16px;
 }
 </style>
